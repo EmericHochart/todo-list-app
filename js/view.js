@@ -172,45 +172,49 @@
 
 	View.prototype.bind = function (event, handler) {
 		var self = this;
-		if (event === 'newTodo') {
-			$on(self.$newTodo, 'change', function () {
+		switch (event) {
+			case 'newTodo':
+				$on(self.$newTodo, 'change', function () {
 				handler(self.$newTodo.value);
-			});
-
-		} else if (event === 'removeCompleted') {
-			$on(self.$clearCompleted, 'click', function () {
+				});
+				break;
+			case 'removeCompleted':
+				$on(self.$clearCompleted, 'click', function () {
 				handler();
-			});
-
-		} else if (event === 'toggleAll') {
-			$on(self.$toggleAll, 'click', function () {
+				});
+				break;
+			case 'toggleAll':
+				$on(self.$toggleAll, 'click', function () {
 				handler({completed: this.checked});
-			});
-
-		} else if (event === 'itemEdit') {
-			$delegate(self.$todoList, 'li label', 'dblclick', function () {
+				});
+				break;
+			case 'itemEdit':
+				$delegate(self.$todoList, 'li label', 'dblclick', function () {
 				handler({id: self._itemId(this)});
-			});
-
-		} else if (event === 'itemRemove') {
-			$delegate(self.$todoList, '.destroy', 'click', function () {
+				});
+				break;
+			case 'itemRemove':
+				$delegate(self.$todoList, '.destroy', 'click', function () {
 				handler({id: self._itemId(this)});
-			});
-
-		} else if (event === 'itemToggle') {
-			$delegate(self.$todoList, '.toggle', 'click', function () {
+				});
+				break;
+			case 'itemToggle':
+				$delegate(self.$todoList, '.toggle', 'click', function () {
 				handler({
 					id: self._itemId(this),
 					completed: this.checked
 				});
-			});
-
-		} else if (event === 'itemEditDone') {
-			self._bindItemEditDone(handler);
-
-		} else if (event === 'itemEditCancel') {
-			self._bindItemEditCancel(handler);
-		}
+				});
+				break;
+			case 'itemEditDone':
+				self._bindItemEditDone(handler);
+				break;
+			case 'itemEditCancel':
+				self._bindItemEditCancel(handler);
+				break;
+			default:
+				return;
+		};
 	};
 
 	// Export to window
