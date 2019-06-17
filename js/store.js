@@ -82,15 +82,12 @@
 		
 		// If an ID was actually given, find the item and update each property
 		if (id) {
-			for (var i = 0; i < todos.length; i++) {
-				if (todos[i].id === id) {
-					for (var key in updateData) {
-						todos[i][key] = updateData[key];
-					}
-					break;
+			var todo = todos.find(todo => todo.id == id );
+			if (todo !== undefined) {
+				for (var key in updateData) {
+						todo[key] = updateData[key];
 				}
 			}
-
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
@@ -121,10 +118,10 @@
 	 * @param {function} callback The callback to fire after saving
 	 */
 	Store.prototype.remove = function (id, callback) {
-		var data = JSON.parse(localStorage[this._dbName]);
-		var todos = data.todos.filter(todo => todo.id !== id);
+		var data = JSON.parse(localStorage[this._dbName]);		
+		data.todos = data.todos.filter(todo => todo.id !== id);			
 		localStorage[this._dbName] = JSON.stringify(data);
-		callback.call(this, todos);
+		callback.call(this, data.todos);
 	};
 
 	/**
