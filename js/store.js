@@ -123,7 +123,6 @@
 	Store.prototype.remove = function (id, callback) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos.filter(todo => todo.id !== id);
-		console.log('test');
 		localStorage[this._dbName] = JSON.stringify(data);
 		callback.call(this, todos);
 	};
