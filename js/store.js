@@ -83,7 +83,7 @@
 		// If an ID was actually given, find the item and update each property
 		if (id) {
 			var todo = todos.find(todo => todo.id == id );
-			if (todo !== undefined) {
+			if (todo) {
 				for (var key in updateData) {
 						todo[key] = updateData[key];
 				}
