@@ -1,4 +1,7 @@
 /*jshint laxbreak:true */
+/**
+ * @class
+ */
 (function (window) {
 	'use strict';
 
@@ -27,7 +30,8 @@
 	/**
 	 * Sets up defaults for all the Template methods such as a default template
 	 *
-	 * @constructor
+	 * @constructor Template
+	 * @name Template
 	 */
 	function Template() {
 		this.defaultTemplate
@@ -45,7 +49,8 @@
 	 *
 	 * NOTE: In real life you should be using a templating engine such as Mustache
 	 * or Handlebars, however, this is a vanilla JS example.
-	 *
+	 * @method
+	 * @name Template.show
 	 * @param {object} data The object containing keys you want to find in the
 	 *                      template to replace.
 	 * @returns {string} HTML String of an <li> element
@@ -83,7 +88,8 @@
 
 	/**
 	 * Displays a counter of how many to dos are left to complete
-	 *
+	 * @method
+	 * @name Template.itemCounter
 	 * @param {number} activeTodos The number of active todos.
 	 * @returns {string} String containing the count
 	 */
@@ -95,8 +101,9 @@
 
 	/**
 	 * Updates the text within the "Clear completed" button
-	 *
-	 * @param  {[type]} completedTodos The number of completed todos.
+	 * @method
+	 * @name Template.clearCompletedButton
+	 * @param  {number} completedTodos The number of completed todos.
 	 * @returns {string} String containing the count
 	 */
 	Template.prototype.clearCompletedButton = function (completedTodos) {

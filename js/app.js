@@ -1,10 +1,12 @@
-/*global app, $on */
+/** 
+ * @function
+ */
 (function () {
-	'use strict';
+	'use strict';	
 
-	/**
+	/** 
 	 * Sets up a brand new Todo list.
-	 *
+	 * @function Todo 	 
 	 * @param {string} name The name of your new to do list.
 	 */
 	function Todo(name) {
@@ -14,9 +16,9 @@
 		this.view = new app.View(this.template);
 		this.controller = new app.Controller(this.model, this.view);
 	}
-
+	
 	var todo = new Todo('todos-vanillajs');
-
+	
 	function setView() {
 		todo.controller.setView(document.location.hash);
 	}

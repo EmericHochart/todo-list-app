@@ -5,6 +5,12 @@
     "todomvc-app-css": "^2.0.1"
   },
   "devDependencies": {
-    "jasmine-core": "^2.0.0"
+    "jasmine-core": "^2.0.0",
+    "jsdoc-md": "^4.0.1",
+    "jsdoc-to-markdown": "^5.0.1",
+    "minami": "^1.2.3"
+  },
+  "scripts": {
+    "doc":"jsdoc ./js/ -t ./node_modules/minami"
   }
 }
